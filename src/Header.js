@@ -11,8 +11,10 @@ import ChatIcon from '@mui/icons-material/Chat';
 import AddIcon from '@mui/icons-material/Add';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import { Avatar } from '@mui/material';
+import { useStateValue } from './StateProvider';
 
 function Header() {
+  const [{user} , dispatch] = useStateValue();
   return (
     <div>
     <div className='header'>
@@ -29,8 +31,8 @@ function Header() {
             <AccountCircleIcon/>
         </div>
         <div className='header_right'>
-            <AccountCircleIcon/>
-            <p>shahzaib</p>
+            <Avatar src={user.photoURL}/>
+            <p>{user.displayName}</p>
             <ChatIcon/>
             <AddIcon/>
             <NotificationsActiveIcon/>

@@ -1,14 +1,16 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
 
-function Post({avatarSrc,profileName,timeStamp,message,imgSrc}) {
+
+function Post({ profilePic,username, timestamp, message,  image}) {
+
   return (
     <div>
-        <Avatar src={avatarSrc}/>
-        <p>{profileName}</p>
-        <p>{timeStamp}</p>
+        <Avatar src={profilePic}/>
+        <p>{username}</p>
+        <p>{new Date(timestamp?.toDate()).toUTCString()}</p>
         <p>{message}</p>
-        <img src={imgSrc}/>
+        <img src={image}/>
     </div>
   )
 }

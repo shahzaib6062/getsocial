@@ -1,25 +1,34 @@
-import React from 'react'
+import React , {useState,useEffect} from 'react'
 import Header from "./Header"
 import MessageSender from './MessageSender'
 import Post from './Post'
 import SideBar from './SideBar'
 import Stories from './Stories'
 import Widget from './Widget'
-
+import db from "./firebase"
 
 function Home() {
+  const [posts , setPosts] = useState([])
+  useEffect(() => {
+    db.collection("posts").onSnapshot((snapshot) =>
+    setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+    );
+  },[]);
   return (
     <div>
       <Header/>
       <SideBar/>
       <Stories/>
       <MessageSender/>
-      <Post avatarSrc="https://images.unsplash.com/photo-1673808516112-e63ec132a623?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-      profileName="Shahzaib"
-      timeStamp="timeStamp..."
-      message="This is a message"
-      imgSrc="https://images.unsplash.com/photo-1670272501077-c72d2d42f362?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-      />
+      {posts.map((post) => (
+        <Post
+        key={post.id}
+        profilePic={post.data.profilePic}
+        message={post.data.message}
+        timestamp={post.data.timestamp}
+        username={post.data.username}
+        image={post.data.image}/>
+      ))}
       <Widget/>
     </div>
   )

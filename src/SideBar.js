@@ -7,13 +7,15 @@ import MessageIcon from '@mui/icons-material/Message';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { useStateValue } from './StateProvider';
 
 
 function SideBar() {
+  const [{user} , dispatch] = useStateValue();
   return (
     <div>
-      <SideBarComp imgsrc="https://images.unsplash.com/photo-1670272501077-c72d2d42f362?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        title="Muhammad shahzaib"
+      <SideBarComp imgsrc={user.photoURL}
+        title={user.displayName}
       />
       <SideBarComp Icon={LocalHospitalIcon}
       title="Covid-19 Information Center"
