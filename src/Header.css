@@ -1,0 +1,14 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.header_middle > {
+    display: flex;
+    padding: 0 20px;
+}
+.header_right{
+    display: flex;
+    justify-content: space-between;
+    
+}
