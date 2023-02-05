@@ -10,7 +10,7 @@ import db from "./firebase"
 function Home() {
   const [posts , setPosts] = useState([])
   useEffect(() => {
-    db.collection("posts").onSnapshot((snapshot) =>
+    db.collection("posts").orderBy("timestamp" , "desc").onSnapshot((snapshot) =>
     setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
     );
   },[]);
@@ -27,7 +27,7 @@ function Home() {
         message={post.data.message}
         timestamp={post.data.timestamp}
         username={post.data.username}
-        image={post.data.image}/>
+        image={post.data.Image}/>
       ))}
       <Widget/>
     </div>
