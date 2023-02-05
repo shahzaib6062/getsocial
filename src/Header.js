@@ -1,6 +1,5 @@
 import React from 'react'
 import "./Header.css"
-import FacebookIcon from '@mui/icons-material/Facebook';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import FlagIcon from '@mui/icons-material/Flag';
@@ -19,23 +18,27 @@ function Header() {
     <div>
     <div className='header'>
         <div className='header_left'>
-        <FacebookIcon/>
+        <img src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-logo-png-transparent-svg-vector-bie-supply-16.png" className='header_left_icon'/>
+        <div className='header_searchfield'>
         <SearchIcon/>
         <input type="text"></input>
         </div>
+        </div>
         <div className='header_middle'>
-            <HomeIcon />
-            <FlagIcon/>
-            <SubscriptionsIcon/>
-            <StorefrontIcon/>
-            <AccountCircleIcon/>
+            <HomeIcon className='header_middle_icon' />
+            <FlagIcon className='header_middle_icon' />
+            <SubscriptionsIcon className='header_middle_icon' />
+            <StorefrontIcon className='header_middle_icon' />
+            <AccountCircleIcon className='header_middle_icon' />
         </div>
         <div className='header_right'>
+            <div className='header_profile'>
             <Avatar src={user.photoURL}/>
             <p>{user.displayName}</p>
-            <ChatIcon/>
-            <AddIcon/>
-            <NotificationsActiveIcon/>
+            </div>
+            <ChatIcon className='header_right_icon'/>
+            <AddIcon className='header_right_icon'/>
+            <NotificationsActiveIcon className='header_right_icon'/>
         </div>
     </div>
     </div>
